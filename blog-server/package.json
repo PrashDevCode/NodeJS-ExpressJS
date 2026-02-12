@@ -1,0 +1,25 @@
+{
+  "name": "blog-server",
+  "version": "1.0.0",
+  "description": "This is a backend application for blogging website",
+  "keywords": [
+    "express",
+    "dotenv",
+    "mongoose",
+    "authentication"
+  ],
+  "license": "ISC",
+  "author": "mission placement",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "vitest",
+    "dev" : "nodemon index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.1"
+  }
+}

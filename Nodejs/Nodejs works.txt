@@ -1,0 +1,102 @@
+Node.js ek JavaScript runtime environment hai jo Chrome ke V8 engine par chalta hai aur JavaScript ko browser ke bahar (server side) run karne deta hai.
+
+Big Picture (1 line me)
+
+➡ Node.js single-threaded, non-blocking, event-driven architecture par kaam karta hai.
+
+Ab isko step-by-step samjhte hain 👇
+
+1️⃣ V8 Engine – JS ko machine code me convert karta hai
+
+Chrome ka V8 engine JavaScript ko fast machine code me convert karta hai.
+
+Isi wajah se Node.js bahut fast hota hai.
+
+2️⃣ Single Threaded Model
+
+Node.js ek hi main thread use karta hai.
+
+Matlab:
+
+Ek time par ek hi kaam execute hota hai
+
+Lekin phir bhi slow nahi hota kyunki…
+
+👉 Non-blocking system use karta hai.
+
+3️⃣ Non-Blocking I/O (Most Important Concept)
+
+Normal languages:
+
+File read ho rahi → program wait karega ❌
+
+Node.js:
+
+File read start ki → next kaam turant start ✔
+
+Result aane par callback / promise se handle karta hai.
+
+Isliye Node.js:
+➡ High performance
+➡ Thousands of users handle kar sakta hai
+
+4️⃣ Event Loop – Node.js ka heart ❤️
+
+Event loop decide karta hai:
+
+Kaunsa task ab run hoga
+
+Kaunsa background me wait karega
+
+Kaunsa callback execute hoga
+
+Flow simple me:
+
+Request aayi
+
+Agar fast kaam hai → direct run
+
+Agar I/O hai → background me bhej diya
+
+Kaam complete → callback queue me
+
+Event loop → callback execute karega
+
+5️⃣ Thread Pool (Background Workers)
+
+Heavy kaam jaise:
+
+File system
+
+Database
+
+Network
+
+Ye sab libuv thread pool me chalte hain background me.
+
+Isliye:
+➡ Main thread free rehta hai
+➡ Server fast respond karta hai
+
+Complete Flow Example
+
+User → Request →
+Main Thread → Check task →
+I/O task → Thread pool →
+Result → Callback queue →
+Event loop → Response send ✔
+
+Why Node.js is Fast
+
+V8 engine
+
+Non-blocking I/O
+
+Event loop
+
+Single thread but async handling
+
+Interview 5-line Answer
+
+Node.js ek single-threaded, event-driven, non-blocking runtime hai jo V8 engine par chalta hai.
+Ye event loop aur libuv thread pool ki help se multiple requests ko efficiently handle karta hai, isliye high-performance and scalable server applications banane ke liye use hota hai.

@@ -1,0 +1,169 @@
+Express.js ek fast, minimal Node.js framework hai jo
+HTTP server, routing, middleware, APIs banana bahut easy bana deta hai.
+
+1️⃣ Express install karna
+npm init -y
+npm install express
+
+2️⃣ Basic Express Server
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello from Express');
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+
+Flow samjho
+
+express() → app create karta hai
+
+app.get() → route banata hai
+
+res.send() → response bhejta hai
+
+app.listen() → server start karta hai
+
+3️⃣ Multiple Routes Example
+app.get('/about', (req, res) => {
+  res.send('About page');
+});
+
+app.get('/contact', (req, res) => {
+  res.send('Contact page');
+});
+
+4️⃣ JSON Data bhejna
+app.get('/user', (req, res) => {
+  res.json({ name: 'Shubham', role: 'Developer' });
+});
+
+5️⃣ POST Request handle karna
+app.use(express.json()); // body parser
+
+app.post('/user', (req, res) => {
+  console.log(req.body);
+  res.send('User created');
+});
+
+6️⃣ Why Express is Popular
+
+Simple routing
+
+Middleware support
+
+Fast API development
+
+Large ecosystem (npm packages)
+
+Interview Short Answer
+
+Express.js ek minimal Node.js web framework hai jo
+routing, middleware, aur HTTP handling ko simple banata hai.
+Isse REST APIs aur web servers quickly develop kiye ja sakte hain.
+
+
+----------------------------------------------------------------------
+
+
+Node.js me versioning mainly 3 jagah par use hoti hai:
+
+Node.js runtime version
+
+npm package versions
+
+API versioning (Express apps me)
+
+Chalo step-by-step samjhte hain 👇
+
+1️⃣ Node.js Runtime Version
+
+Tumhare system me kaunsa Node version installed hai:
+
+node -v
+
+
+Example:
+
+v22.13.1
+
+Multiple versions manage karne ke liye
+
+➡ nvm (Node Version Manager) use hota hai.
+
+nvm install 18
+nvm use 18
+
+2️⃣ npm Package Versioning (Most Important)
+
+Har package ka semantic version hota hai:
+
+MAJOR.MINOR.PATCH
+Example: 4.18.2
+
+Meaning:
+
+MAJOR → breaking changes
+
+MINOR → new features, backward compatible
+
+PATCH → bug fixes only
+
+package.json me version symbols
+^ (caret)
+"express": "^4.18.2"
+
+
+➡ Minor & patch updates allow
+➡ Install ho sakta hai: 4.19.0
+❌ But 5.0.0 nahi
+
+~ (tilde)
+"express": "~4.18.2"
+
+
+➡ Sirf patch updates allow
+➡ Install ho sakta hai: 4.18.3
+❌ 4.19.0 nahi
+
+Exact version
+"express": "4.18.2"
+
+
+➡ Same version hi install hoga
+
+3️⃣ package-lock.json ka role
+
+Exact dependency tree lock karta hai
+
+Sab machines par same versions ensure karta hai
+
+Production stability ke liye important
+
+4️⃣ API Versioning in Express
+
+Real projects me endpoints versioned hote hain:
+
+/api/v1/users
+/api/v2/users
+
+
+Example:
+
+app.use('/api/v1', userRoutesV1);
+app.use('/api/v2', userRoutesV2);
+
+
+➡ Old clients break nahi hote
+➡ New features safely add ho sakte hain
+
+Interview 5-line Perfect Answer
+
+Node.js me versioning semantic versioning (MAJOR.MINOR.PATCH) follow karti hai.
+npm dependencies me ^, ~, ya exact versions use hote hain to control updates.
+package-lock.json exact dependency versions lock karta hai for consistency.
+Runtime versions manage karne ke liye nvm use hota hai.
+APIs me backward compatibility ke liye endpoint versioning (/v1, /v2) ki jati hai.

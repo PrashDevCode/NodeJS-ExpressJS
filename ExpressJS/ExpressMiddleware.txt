@@ -1,0 +1,84 @@
+Middleware wo functions hote hain jo
+request → response cycle ke beech me run hote hain.
+
+Matlab:
+
+Request → Middleware → Route Handler → Response
+
+
+Middleware ka kaam ho sakta hai:
+
+logging
+
+authentication
+
+validation
+
+error handling
+
+body parsing
+
+1️⃣ Basic Middleware Example
+const express = require('express');
+const app = express();
+
+const logger = (req, res, next) => {
+  console.log('Request received');
+  next(); // next middleware ya route par jaata hai
+};
+
+app.use(logger);
+
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+app.listen(3000);
+
+
+👉 next() bahut important hai
+warna request yahin ruk jayegi.
+
+2️⃣ Built-in Middleware
+JSON body parser
+app.use(express.json());
+
+Static files serve
+app.use(express.static('public'));
+
+3️⃣ Route-level Middleware
+const auth = (req, res, next) => {
+  if (req.query.token === '123') next();
+  else res.send('Unauthorized');
+};
+
+app.get('/dashboard', auth, (req, res) => {
+  res.send('Welcome to dashboard');
+});
+
+4️⃣ Error-handling Middleware
+app.use((err, req, res, next) => {
+  res.status(500).send('Something went wrong');
+});
+
+
+👉 Isme 4 parameters hote hain → (err, req, res, next)
+
+5️⃣ Types of Middleware
+
+Application-level
+
+Router-level
+
+Built-in
+
+Third-party (e.g., morgan, cors)
+
+Error-handling
+
+Interview Short Answer
+
+Express middleware wo functions hote hain jo
+request-response cycle ke beech execute hote hain.
+Ye logging, authentication, validation, error handling jaise kaam karte hain
+aur next() call karke next middleware ya route handler ko control dete hain.

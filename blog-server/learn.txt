@@ -1,0 +1,62 @@
+npm init -> initialize a backend service
+version -> 1.0.0 -> 1.0.1 
+test -> jest, vitest
+type -> require [ commonjs ] -> import [ module ]
+
+--> 
+1- app.listen(port_number, callback_func) -> to tell where it is running
+2- app.get(route, callback_func) -> methods
+
+--> run server with auto-reload
+    1- package -> nodemon
+    2- built-in -> --watch
+
+--> DB
+    - 1. SQL -> PostGreSQL [ Sequelize, Drizzle ], MySQL [ ORM ]
+    - 2. NoSQL -> Cassandra, MongoDb [ ODM : mongoose ], Redis
+    - 3. Check info.txt in db folder
+
+--> data-flow
+    -> success : server.js -> middleware -> routes -> controller -> services -> response
+    -> failure : server.js -> middleware -> routes -> controller -> services -> global error handler -> response
+
+--> Middlewares
+    -> functions or anything that works before processing a request
+    -> something that works between two tasks
+
+    --> Custom Middlewares
+        const myMiddleware = (req, res, next) => {
+            console.log("In My Middleware");
+            // some more operations
+            if (5 != 6) {
+                return res.json("5 is not equal to 6");
+            }
+
+            // req[userId] -> middleware - fetchUserData(userId) -> req[{name, email, phoneNumber}] -> controller -> services -> {name, email, phoneNumber}
+
+            next();
+        };
+
+
+--> DRY -> Do Not Repeat Yourself
+
+--> Arrow functions
+
+    1. const a = () => {
+          return
+        }
+
+    2. const b = () => c
+
+--> use of next
+    app.get("/abc", (req, res, next) => {
+        // some operation
+        next()
+    });
+
+    const abc = (req, res, next) => {
+        console.log("here")
+        // some operattion
+
+        next()
+    }

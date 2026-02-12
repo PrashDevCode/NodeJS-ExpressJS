@@ -1,0 +1,87 @@
+Module ka matlab hota hai code ka chhota reusable part jo alag file me hota hai aur jise hum dusri files me use kar sakte hain.
+
+Node.js me almost sab kuch module-based hota hai.
+
+Types of Modules in Node.js
+1️⃣ Core Modules (Built-in)
+
+Ye Node.js ke saath already aate hain. Install karne ki zaroorat nahi.
+
+Examples:
+
+fs → file system handle karne ke liye
+
+http → server banane ke liye
+
+path → file paths manage karne ke liye
+
+os → system info lene ke liye
+
+Example:
+
+const fs = require('fs');
+
+fs.writeFileSync('test.txt', 'Hello Node');
+
+2️⃣ Local Modules (User-defined)
+
+Jo tum khud banate ho project ke andar.
+
+Step-by-step example:
+
+math.js
+
+function add(a, b) {
+  return a + b;
+}
+
+module.exports = add;
+
+
+app.js
+
+const add = require('./math');
+
+console.log(add(2, 3));
+
+3️⃣ Third-party Modules (npm packages)
+
+Jo npm se install hote hain.
+
+Example:
+
+npm install express
+
+const express = require('express');
+
+Export & Import ka concept
+Export karna
+module.exports = value
+
+Import karna
+const value = require('./file')
+
+ES Modules (Modern Syntax)
+
+Aajkal ye zyada use ho raha hai:
+
+// export
+export const add = (a, b) => a + b;
+
+// import
+import { add } from './math.js';
+
+
+Iske liye "type": "module" package.json me hona chahiye.
+
+Short Summary
+
+Core modules → Node ke built-in
+
+Local modules → khud ke banaye hue
+
+Third-party modules → npm se install
+
+module.exports / require → CommonJS system
+
+import / export → ES Module system

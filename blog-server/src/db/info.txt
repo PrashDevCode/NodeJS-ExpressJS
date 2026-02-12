@@ -1,0 +1,10 @@
+-> connection
+
+Step-1 : Create a cluster and get connection string [ URL ]
+Step-2 : Create function 'connectDb', use 'mongoose.connect(url, {dbName:"blog-server"})
+Step-3 : Export the function and call it in server.js
+
+-> collection creation 
+    - SQL - Table | NoSQL - collections
+
+    - To create collections : 1. Model | Schema

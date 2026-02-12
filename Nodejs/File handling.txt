@@ -1,0 +1,76 @@
+Node.js me file handling ka kaam mainly fs (File System) module se hota hai.
+Isse hum file create, read, update, delete sab kar sakte hain.
+
+1️⃣ fs module ko import karna
+const fs = require('fs');
+
+2️⃣ File Read karna
+Synchronous way
+const data = fs.readFileSync('test.txt', 'utf-8');
+console.log(data);
+
+
+➡ Program tab tak rukta hai jab tak file read na ho jaye.
+
+Asynchronous way (better)
+fs.readFile('test.txt', 'utf-8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+
+
+➡ Non-blocking hota hai → recommended.
+
+3️⃣ File Create / Write karna
+fs.writeFile('test.txt', 'Hello Shubham', (err) => {
+  if (err) throw err;
+  console.log('File created');
+});
+
+Sync version
+fs.writeFileSync('test.txt', 'Hello');
+
+4️⃣ File me data Append karna
+fs.appendFile('test.txt', '\nNew line added', (err) => {
+  if (err) throw err;
+});
+
+5️⃣ File Delete karna
+fs.unlink('test.txt', (err) => {
+  if (err) throw err;
+  console.log('File deleted');
+});
+
+6️⃣ Folder (Directory) Operations
+Folder banana
+fs.mkdir('demo', (err) => {
+  if (err) throw err;
+});
+
+Folder delete
+fs.rmdir('demo', (err) => {
+  if (err) throw err;
+});
+
+7️⃣ Promise-based modern syntax (fs/promises)
+const fs = require('fs/promises');
+
+async function readFile() {
+  const data = await fs.readFile('test.txt', 'utf-8');
+  console.log(data);
+}
+
+readFile();
+
+
+➡ Best & modern approach
+
+Interview Short Summary
+
+Node.js me file handling fs module se hoti hai
+
+Sync vs Async → Async preferred (non-blocking)
+
+Operations → read, write, append, delete, directory manage
+
+Modern way → fs/promises + async/await
